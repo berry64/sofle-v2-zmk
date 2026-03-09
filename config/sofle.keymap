@@ -67,7 +67,7 @@
                    &kp LGUI  &kp LALT  &kp LCTRL  &mo LOWER  &kp RET       &kp SPACE  &mo RAISE  &kp RCTRL  &kp RALT   &kp RGUI
             >;
 
-            sensor-bindings = <&inc_dec_kp LC(RIGHT) LC(LEFT) &enc_down_up>;
+            sensor-bindings = <&enc_down_up &inc_dec_kp LC(RIGHT) LC(LEFT)>;
         };
 
         lower_layer {
@@ -89,7 +89,7 @@
                       &studio_unlock     &trans       &trans    &trans     &trans    &trans  &trans     &trans    &trans           &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &enc_R_L>;
+            sensor-bindings = < &enc_R_L &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         raise_layer {
