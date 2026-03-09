@@ -89,7 +89,7 @@
                       &studio_unlock     &trans       &trans    &trans     &trans    &trans  &trans     &trans    &trans           &trans
             >;
 
-            sensor-bindings = < &enc_R_L &inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&enc_R_L &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         raise_layer {
