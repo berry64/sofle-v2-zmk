@@ -34,6 +34,16 @@
             #sensor-binding-cells = <2>;
             bindings = <&msc>, <&msc>;
         };
+        enc_down_up: enc_down_up {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+        };
+        enc_R_L: enc_R_L {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_RIGHT>, <&msc SCRL_LEFT>;
+        };
     };
 
     keymap {
@@ -57,7 +67,7 @@
                    &kp LGUI  &kp LALT  &kp LCTRL  &mo LOWER  &kp RET       &kp SPACE  &mo RAISE  &kp RCTRL  &kp RALT   &kp RGUI
             >;
 
-            sensor-bindings = <&inc_dec_kp LC(RIGHT) LC(LEFT) &encoder_msc SCRL_UP SCRL_DOWN>;
+            sensor-bindings = <&inc_dec_kp LC(RIGHT) LC(LEFT) &enc_down_up>;
         };
 
         lower_layer {
@@ -79,7 +89,7 @@
                       &studio_unlock     &trans       &trans    &trans     &trans    &trans  &trans     &trans    &trans           &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &encoder_msc SCRL_RIGHT SCRL_LEFT>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &enc_R_L>;
         };
 
         raise_layer {
@@ -100,7 +110,7 @@
                           &trans        &trans        &trans        &trans        &trans    &trans  &trans     &trans    &trans    &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp C_BRI_UP C_BRI_DN>;
+            sensor-bindings = <&inc_dec_kp PG_DN PG_UP &inc_dec_kp C_BRI_UP C_BRI_DN>;
         };
 
         adjust_layer {
