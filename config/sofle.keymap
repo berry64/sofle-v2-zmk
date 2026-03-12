@@ -13,7 +13,8 @@
 #define BASE 0
 #define LOWER 1
 #define RAISE 2
-#define ADJUST 3
+#define NUMPADL 3
+#define ADJUST 4
 
 / {
     // Activate ADJUST layer by pressing raise and lower
@@ -24,6 +25,15 @@
         adjust_layer {
             if-layers = <LOWER RAISE>;
             then-layer = <ADJUST>;
+        };
+    };
+    
+    behaviors {
+        td_raise: tap_dance_raise {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&mo RAISE>, <&mo NUMPADL>;
         };
     };
 
@@ -38,7 +48,7 @@
 &kp ESC    &kp Q   &kp W     &kp E     &kp R      &kp T                               &kp Y      &kp U      &kp I      &kp O     &kp P     &kp BSPC
 &kp TAB    &kp A   &kp S     &kp D     &kp F      &kp G                               &kp H      &kp J      &kp K      &kp L     &kp SEMI  &kp SQT
 &kp LSHFT  &kp Z   &kp X     &kp C     &kp V      &kp B      &kp LC(UP)    &kp K_LOCK &kp N      &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
-                   &kp LGUI  &kp LALT  &kp LCTRL  &mo LOWER  &kp RET       &kp SPACE  &mo RAISE  &kp RCTRL  &kp RALT   &kp RGUI
+                   &kp LGUI  &kp LALT  &kp LCTRL  &mo LOWER  &kp RET       &kp SPACE  &td_raise &kp RCTRL  &kp RALT   &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp LC(RIGHT) LC(LEFT) &inc_dec_kp DOWN UP>;
@@ -77,6 +87,17 @@
             >;
 
             sensor-bindings = <&inc_dec_kp PG_DN PG_UP &inc_dec_kp C_BRI_UP C_BRI_DN>;
+        };
+
+        num_layer {
+            label = "numpad";
+            bindings = <
+            &trans  &trans  &trans  &trans  &trans  &trans                  &none        &kp KP_NLCK  &kp KP_DIVIDE  &kp KP_MULTIPLY   &kp KP_MINUS  &none
+            &trans  &trans  &trans  &trans  &trans  &trans                  &none        &kp N7         &kp N8           &kp N9        &kp KP_PLUS   &trans
+            &trans  &trans  &trans  &trans  &trans  &trans                  &none        &kp N4         &kp N5           &kp N6        &kp KP_ENTER  &none
+            &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &none        &kp N1         &kp N2           &kp N3        &kp KP_ENTER  &none
+                            &trans  &trans  &trans  &trans  &trans  &trans  &none        &kp N0         &kp N0           &kp DOT
+            >;
         };
 
         adjust_layer {
